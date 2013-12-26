@@ -1,0 +1,148 @@
+name: Duties
+version: 1.4.3
+description: Saves your survival state and let's you revert back it!
+author: TH3PF
+authors: [TH3PF] 
+website: http://dev.bukkit.org/server-mods/duties/
+main: me.th3pf.plugins.duties.Duties
+softdepend: [Vault,TagAPI]
+commands:
+  duties:
+    description: Plugin management
+    usage: /duties [command]
+  dutymode:
+    description: Performs diffrent duty mode actions
+    usage: /dutymode [command]
+    aliases: [dm, duty]
+permissions:
+    duties.*:
+        description: Gives access to every Duties command.
+        default: op
+        children:
+            duties.help: true
+            duties.purge: true           
+            duties.list: true
+            duties.listall: true
+            duties.reload: true
+            duties.disable: true
+            duties.updateconfig: true
+            duties.self.toggle: true
+            duties.self.enable: true
+            duties.self.disable: true
+            duties.others.toggle: true
+            duties.others.enable: true
+            duties.others.disable: true
+            duties.getreminder.*: true
+            duties.belisted: true
+            duties.broadcast: true
+            duties.getbroadcasts: true
+            duties.self.setbroadcasts.*: true
+            duties.others.setbroadcasts.*: true
+    duties.help:
+        description: Shows the help for the plugin
+    duties.list:
+        description: Lists all players that have duty mode on
+    duties.listall:
+        description: Lists all players that have duty mode on
+    duties.purge:
+        description: Forces all player off duty mode
+    duties.reload:
+        description: Reloads the plugin
+    duties.disable:
+        description: Disables the plugin
+    duties.admin:
+        description: Gives access to every Duties command
+        children:
+            duties.help: true
+            duties.purge: true
+            duties.list: true
+            duties.listall: true
+            duties.reload: true
+            duties.disable: true
+            duties.updateconfig: true
+            duties.self.toggle: true
+            duties.self.enable: true
+            duties.self.disable: true
+            duties.others.toggle: true
+            duties.others.enable: true
+            duties.others.disable: true
+            duties.getreminder.*: true
+            duties.belisted: true
+            duties.broadcast: true
+            duties.getbroadcasts: true
+            duties.self.setbroadcasts.*: true
+            duties.others.setbroadcasts.*: true
+    duties.mod:
+        description: Gives access to set your own status
+        children:
+            duties.help: true
+            duties.self.toggle: true
+            duties.self.enable: true
+            duties.self.disable: true
+            duties.getreminder.*: true
+            duties.list: true
+            duties.listall: true
+            duties.belisted: true
+            duties.broadcast: true
+            duties.getbroadcasts: true
+            duties.self.setbroadcasts.*: true
+    duties.regular:
+        description: Gives access to list all players that have duty mode on
+        children:
+            duties.list: true
+            duties.getbroadcasts: true
+    duties.staff:
+        description: Treats player as a part of the staff
+        children:
+            duties.belisted: true
+            duties.broadcast: true
+    duties.self.*:
+        description: Gives access to set your own status
+        children:
+            duties.self.toggle: true
+            duties.self.enable: true
+            duties.self.disable: true
+    duties.others.*:
+        description: Gives access to set others status
+        children:
+            duties.others.toggle: true
+            duties.others.enable: true
+            duties.others.disable: true
+    duties.broadcast:
+        description: Gives access to broadcast duty mode changes
+    duties.bypass.dropitems:
+        description: Allows the player to bypass the on-duty item drop prevention feature
+    duties.bypass.chestinteracts:
+        description: Allows the player to bypass the on-duty chest interact prevention feature
+    duties.getbroadcasts:
+        description: Informs the player when someones duty mode status have been changed
+    duties.self.setbroadcasts.*:
+        description: Gives access to enable and disable broadcasts
+        children:
+            duties.self.setbroadcasts.shown: true
+            duties.self.setbroadcasts.hidden: true
+    duties.self.setbroadcasts.shown:
+        description: Gives access to force your broadcasts visible
+    duties.self.setbroadcasts.hidden:
+        description: Gives access to force your broadcasts invisible
+    duties.others.setbroadcasts.*:
+        description: Gives access to enable and disable broadcasts
+        children:
+            duties.others.setbroadcasts.shown: true
+            duties.others.setbroadcasts.hidden: true
+    duties.others.setbroadcasts.shown:
+        description: Gives access to force your broadcasts visible
+    duties.others.setbroadcasts.hidden:
+        description: Gives access to force someones broadcasts invisible
+    duties.getreminder.*:
+        description: Provides the player all of the reminders when duty mode is on
+        children:
+            duties.getreminder.onlogin: true
+            duties.getreminder.onchestinteract: true
+            duties.getreminder.onitemdrop: true
+    duties.getreminder.onlogin:
+        description: Provides the player a reminder when logging in when duty mode is on
+    duties.getreminder.onchestinteract:
+        description: Provides the player a reminder when opening a chest when duty mode is on
+    duties.getreminder.onitemdrop:
+        description: Provides the player a reminder when dropping an item when duty mode is on
