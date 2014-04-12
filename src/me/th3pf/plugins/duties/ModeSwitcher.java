@@ -224,12 +224,10 @@ public class ModeSwitcher
 				{
 					for(String command : Duties.Config.GetStringList("Actions.onEnable.CommandsByConsole"))
 					{	
-					
-						Duties.GetInstance().getServer().dispatchCommand(Bukkit.getConsoleSender(),(command.replaceFirst("/", "")
-								.replaceAll("%PLAYER_NAME%", player.getName()
-						//		.replaceAll("%PLAYER_LOCATION%",player.getLocation().toString())
-								.replaceAll("%PLAYER_GAMEMODE%", player.getGameMode().toString())
-						)));
+						String parsedCommand = ("/".equals(command.charAt(0)) ? command.substring(1) : command)
+								.replaceAll("%PLAYER_NAME%", player.getName())
+								.replaceAll("%PLAYER_GAMEMODE%", player.getGameMode().toString());
+						Duties.GetInstance().getServer().dispatchCommand(Bukkit.getConsoleSender(), parsedCommand);
 					}
 					
 					return true;
