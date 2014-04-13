@@ -176,11 +176,10 @@ public class ModeSwitcher
 				{
 					for(String message : Duties.Config.GetStringList("Actions.onEnable.Messages"))
 					{	
-						ModeSwitcher.this.player.sendMessage(message.replaceFirst("/", "")
-								.replaceAll("%PLAYER_NAME%", player.getName()
-						//		.replaceAll("%PLAYER_LOCATION%",player.getLocation().toString())
-								.replaceAll("%PLAYER_GAMEMODE%", player.getGameMode().toString())
-						));
+						String parsedMessage = ("/".equals(message.charAt(0)) ? message.substring(1) : message)
+								.replaceAll("%PLAYER_NAME%", player.getName())
+								.replaceAll("%PLAYER_GAMEMODE%", player.getGameMode().toString());
+						ModeSwitcher.this.player.sendMessage(parsedMessage);
 					}
 					
 					return true;
@@ -200,10 +199,10 @@ public class ModeSwitcher
 				{
 					for(String command : Duties.Config.GetStringList("Actions.onEnable.Commands"))
 					{	
-						player.performCommand(command.replaceFirst("/", "")
-								.replaceAll("%PLAYER_NAME%", player.getName()
-						//		.replaceAll("%PLAYER_LOCATION%",player.getLocation().toString())
-								.replaceAll("%PLAYER_GAMEMODE%", player.getGameMode().toString())
+						String parsedCommand = ("/".equals(command.charAt(0)) ? command.substring(1) : command)
+								.replaceAll("%PLAYER_NAME%", player.getName())
+								.replaceAll("%PLAYER_GAMEMODE%", player.getGameMode().toString());
+						player.performCommand(parsedCommand);
 						));
 					}
 					
@@ -469,11 +468,10 @@ public class ModeSwitcher
 				{
 					for(String message : Duties.Config.GetStringList("Actions.onDisable.Messages"))
 					{	
-						ModeSwitcher.this.player.sendMessage(message.replaceFirst("/", "")
-								.replaceAll("%PLAYER_NAME%", player.getName()
-						//		.replaceAll("%PLAYER_LOCATION%",player.getLocation().toString())
-								.replaceAll("%PLAYER_GAMEMODE%", player.getGameMode().toString())
-						));
+						String parsedMessage = ("/".equals(message.charAt(0)) ? message.substring(1) : message)
+								.replaceAll("%PLAYER_NAME%", player.getName())
+								.replaceAll("%PLAYER_GAMEMODE%", player.getGameMode().toString());
+						ModeSwitcher.this.player.sendMessage(parsedMessage);
 					}
 					
 					return true;
@@ -609,10 +607,10 @@ public class ModeSwitcher
 				{
 					for(String command : Duties.Config.GetStringList("Actions.onDisable.Commands"))
 					{
-						player.performCommand(command.replaceFirst("/", "")
-								.replaceAll("%PLAYER_NAME%", player.getName()
-								//.replaceAll("%PLAYER_LOCATION%",player.getLocation().toString())
-								.replaceAll("%PLAYER_GAMEMODE%", player.getGameMode().toString())
+						String parsedCommand = ("/".equals(command.charAt(0)) ? command.substring(1) : command)
+								.replaceAll("%PLAYER_NAME%", player.getName())
+								.replaceAll("%PLAYER_GAMEMODE%", player.getGameMode().toString());
+						player.performCommand(parsedCommand);
 						));
 					}
 					
@@ -633,11 +631,10 @@ public class ModeSwitcher
 				{
 					for(String command : Duties.Config.GetStringList("Actions.onDisable.CommandsByConsole"))
 					{	
-						Duties.GetInstance().getServer().dispatchCommand(Bukkit.getConsoleSender(),(command.replaceFirst("/", "")
-								.replaceAll("%PLAYER_NAME%", player.getName()
-						//		.replaceAll("%PLAYER_LOCATION%",player.getLocation().toString())
-								.replaceAll("%PLAYER_GAMEMODE%", player.getGameMode().toString())
-						)));
+						String parsedCommand = ("/".equals(command.charAt(0)) ? command.substring(1) : command)
+								.replaceAll("%PLAYER_NAME%", player.getName())
+								.replaceAll("%PLAYER_GAMEMODE%", player.getGameMode().toString());
+						Duties.GetInstance().getServer().dispatchCommand(Bukkit.getConsoleSender(), parsedCommand);
 					}
 					
 					return true;
